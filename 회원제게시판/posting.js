@@ -118,8 +118,8 @@ function detailPosting(postingCode) {
                         <p>${temp.content}</p>
                     </fieldset>
                     <div style = "margin : 15px 0px; text-align : end;">
-                        <button class = "btn">수정</button>
-                        <button class = "btn" onclick = "deletePosting(${temp.code})">삭제</button>
+                        <button class = "btn" onclick = "changePosting(${temp.code}, ${temp.idCode})">수정</button>
+                        <button class = "btn" onclick = "deletePosting(${temp.code}, ${temp.idCode})">삭제</button>
                     </div>
                 </div>
             </div>`;
@@ -130,8 +130,9 @@ function detailPosting(postingCode) {
 }
 
 // 게시물삭제함수
-function deletePosting(postingCode) {
-    if(postingCode == loginState.code) {
+function deletePosting(postingCode, idCode) {
+    if(idCode == loginState.code) {
+        console.log("true실행");
         for(let index = 0; index < postingList.length; index++) {
             let temp = postingList[index];
             if(temp.code == postingCode) {
@@ -149,6 +150,43 @@ function deletePosting(postingCode) {
     }
     printPosting();
 }
+// 게시물수정함수
+function changePosting(postingCode, idCode) {
+    if(idCode == loginState.code) {
+        for(let index = 0; index < postingList.length; index++) {
+            let temp = postingList[index];
+            if(temp.code == postingCode) {
+                let change = confirm("수정하시겠습니까?");
+                if(change) {
+                    let posting = document.querySelector("#detail_posting");
+                    let now = new Date();
+                    posting.innerHTML = `
+                    <h2>게시물 수정</h2>
+                    <div>
+                        <div>
+                            <div style = "margin : 30px 0px; display : flex; justify-content : space-between;">
+                                <span>제목 : <input type = "text" value = "${temp.title}"/></span>
+                                <span>작성일자 : <label>""</label></span>
+                            </div>
+                            <fieldset>
+                                <legend> 내용 </legend>
+                                <textarea id = "write_content" rows = "20" style = "width : 99%">${temp.content}</textarea>
+                            </fieldset>
+                            <div style = "margin : 15px 0px; text-align : end;">
+                                <button class = "btn" onclick = "changePosting(${temp.code}, ${temp.idCode})">완료</button>
+                                <button class = "btn" onclick = "deletePosting(${temp.code}, ${temp.idCode})">취소</button>
+                            </div>
+                        </div>
+                    </div>`;
+                }
+            }
+        }
+    } else if (loginState.code != "") {
+        alert("본인이 작성한 게시물만 삭제할 수 있습니다.");
+    } else {
+        alert("로그인을 해주세요.");
+    }
+}
 
 // 게시물추가함수
 function addPosting() {
@@ -161,27 +199,34 @@ function addPosting() {
 
 // 게시물작성중 저장함수
 function savePosting() {
-    console.log("저장중...");
-    let now = new Date();
-    let year = now.getFullYear();
-    let month = now.getMonth()+1;
-    let day = now.getDate() < 10 ? "0"+now.getDate() : now.getDate();
-    date = `${year}-${month}-${day}`;
-    console.log(date);
-    let title = document.querySelector("#write_title").value;
-    let content = document.querySelector("#write_content").value;
-    console.log("loginState");
-    console.log(loginState);
-    let temp = {code : PCode, title : title, content : content, date : date, view : 0, idCode : loginState.code};
-    console.log(temp);
-    postingList.push(temp);
-    console.log(postingList);
-    PCode++;
+    // console.log("저장중...");
+    let save = confirm("저장하시겠습니까?");
+    if(save) {        
+        let now = new Date();
+        let year = now.getFullYear();
+        let month = now.getMonth()+1;
+        let day = now.getDate() < 10 ? "0"+now.getDate() : now.getDate();
+        date = `${year}-${month}-${day}`;
+        // console.log(date);
+        let title = document.querySelector("#write_title").value;
+        let content = document.querySelector("#write_content").value;
+        console.log("loginState");
+        console.log(loginState);
+        let temp = {code : PCode, title : title, content : content, date : date, view : 0, idCode : loginState.code};
+        console.log(temp);
+        postingList.push(temp);
+        console.log(postingList);
+        PCode++;
+        title.value = "";
+        content.value = "";
+        document.querySelector("#write_posting").style.display = "none";
+        printPosting();
+    }
 }
 
 // 게시물작성중 취소함수
 function cancelPosting() {
-    let cancel = confirm("취소하면 적성중인 내용은 없어집니다.\n정말 삭제하시겠습니까?");
+    let cancel = confirm("취소하면 적성중인 내용은 없어집니다.\n정말 취소하시겠습니까?");
     if(cancel) {
         document.querySelector("#write_title").value = "";
         document.querySelector("#write_content").value = "";
