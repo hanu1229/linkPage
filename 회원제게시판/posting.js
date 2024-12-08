@@ -90,9 +90,9 @@ function printPosting() {
     let html = ``;
     for(let index = 0; index < postingList.length; index++) {
         let temp = postingList[index];
-        html += `<tr>
+        html += `<tr  class = "content_tr">
             <td class = "content_td">${index+1}</td>
-            <td class = "content_td" style = "cursor : pointer;" onclick = "detailPosting(${temp.code})">${temp.title}</td>
+            <td class = "content_td" id = "content_title" style = "cursor : pointer;" onclick = "detailPosting(${temp.code})">${temp.title}</td>
             <td class = "content_td">${temp.date}</td>
             <td class = "content_td">${temp.view}</td>
         </tr>`;
