@@ -9,13 +9,19 @@
     display : flex;
     justify-content : space-evenly;
 }
-#input_id, #input_pw {
+#input_id, #input_pw, #signUp_id, #signUp_pw {
     margin : 10px 0px;
     display : inline-block;
 }
 
 #signUp_box {
+    margin-top : 30px;
+    width : 35%;
     display : none;
+}
+#signUp_box > fieldset > div > div {
+    display : flex;
+    justify-content : space-between;
 }
 #btn_signOut {
     display : none;
@@ -41,16 +47,11 @@
     transition-duration : 0.5s;
     border-bottom : solid 1px black;
 }
-#content_title:hover {
-    /* padding : 15px 0px;
-    transition-duration : 0.3s; */
+.content_title:hover {
+    padding : 15px 0px;
+    cursor : pointer;
 }
-/* .content_tr:has(#content_title:hover) {
-    color : white;
-    background-color : darkgray;
-    transition-duration : 0.5s;
-} */
-.content_tr:has(#content_title:hover) {
+.content_tr:has(.content_title:hover) {
     animation-name : test;
     animation-duration : 0.1s;
     /* 변경후 CSS 상태 유지 */
@@ -58,11 +59,9 @@
 }
 @keyframes test {
     0% {
-        padding : 15px 0px;
         background-color : darkgray;
     }
     50% {
-        padding : 15px 0px;
         color : white;
     }
     100% {
