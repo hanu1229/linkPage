@@ -1,0 +1,78 @@
+#wrap {
+    margin : 0px auto;
+    width : 1000px;
+    /* display : flex;
+    flex-direction : column;
+    align-items: center; */
+}
+/* #classRegister {
+
+} */
+#classRegister > table {
+    text-align: center;
+    /* td, th간의 간격이 사라짐 */
+    border-collapse: collapse;
+}
+#classRegister > table > thead > tr > #className {
+    width : 400px;
+    /* background-color: red; */
+}
+#classRegister > table > thead > tr > #roomNumber {
+    width : 150px;
+}
+#classRegister > table > thead > tr > #teacherName {
+    width : 150px;
+}
+#classRegister > table > thead > tr > #other {
+    width : 300px;
+}
+.otherBtn {
+    display : flex;
+    justify-content : space-evenly;
+}
+.tableBtn {
+    padding : 5px 10px;
+    border : none;
+    border-radius : 5px;
+    box-shadow : 0px 0px 3px black;
+}
+.tableBtn:hover {
+    box-shadow : 0px 0px 3px purple;
+}
+button {
+    cursor : pointer;
+}
+td {
+    padding : 10px 0px;
+}
+th {
+    padding : 10px 0px;
+    border-bottom : solid 1px black;
+    color : white;
+    background-color: #4472c4;
+}
+tr {
+    border-bottom : solid 1px black;
+}
+tbody tr:nth-child(2n) {
+    background-color : #e9ebf5;
+}
+tbody tr:nth-child(2n+1) {
+    background-color : #cfd5ea;
+}
+tr:hover {
+    background-color : #F5F5F5;
+}
+#studentRegister {
+    margin-bottom : 50px;
+}
+#studentRegister > #choiceClass {
+    width : 100px;
+}
+#studentRegister > table {
+    text-align : center;
+    border-collapse: collapse;
+}
+fieldset {
+    margin : 0px 0px 30px 0px;
+}

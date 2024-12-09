@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <!-- <link rel='stylesheet' type='text/css' media='screen' href='2_종합과제10.css'> -->
+        <script src='2_종합과제10.js'></script>
+    </head>
+    <body onload = "print()">
+        
+        <div style = "text-align : center;">
+            <h1> 인사 정보 등록 </h1>
+            사번 : <input id="id" type="text"/><br/>
+            이름 : <input id="name" type="text"/><br/>
+            생년월일 : <input id="birth" type="date"/><br/>
+            <button onclick="newJoin()" type="button">등록</button>
+    
+            <hr/>
+            <div style = "text-align : center;">
+                <h1>전체 인사 정보 출력 </h1>
+                <table border="1" style = "margin : 0px auto;"> 
+                    <thead> <tr> <th>사번</th> <th>이름</th> <th>생년월일</th> </tr> </thead>
+                    <tbody> 
+                        <tr> <td> 1 </td> <td> 홍길동 </td> <td> 2001.01.01 </td> </tr>
+                        <tr> <td> 2 </td> <td> 김영수 </td> <td> 1998.12.19 </td> </tr>
+                        <tr> <td> 3 </td> <td> 김철수 </td> <td> 1990.11.29 </td> </tr>
+                    </tbody> 
+                </table>
+            </div>
+            <hr/>
+            <div style = "text-align : center;">
+                <h1> 각 인사별 점수 등록 </h1>
+                사번 : <input id = "personid" type="text"/><br/>
+                년도 : <input id = "personyear" type="text"/><br/>
+                상반기점수 : <input id = "person1score" type="text"/><br/>
+                하반기점수 : <input id = "person2score" type="text"/>
+                <button type="button" onclick = "newScore()">등록</button>
+            </div>
+            <hr/>
+            <div id = "scoreBox" style = "text-align : center;">
+                <h1>각 인사별 점수 출력 </h1>
+                사번 : <input id = "inputIDNumber" type="text"/>
+                <button onclick = "search()">검색</button><br/>
+                <br/>
+                <table border="1" style = "margin : 0px auto;">             
+                    <thead>
+                        <tr>
+                            <th>년도</th>
+                            <th>상반기</th>
+                            <th>하반기</th>
+                        </tr>
+                    </thead>
+                    <tbody> 
+                        <!-- <tr>
+                            <td> 2023 </td>
+                            <td> 2023_1 </td>
+                            <td> 2023_2 </td>
+                        </tr>
+                        <tr>
+                            <td> 2022 </td>
+                            <td> 2022_1 </td>
+                            <td> 2022_2 </td>
+                        </tr>
+                        <tr>
+                            <td> 2021 </td>
+                            <td> 2021_1 </td>
+                            <td> 2021_2 </td>
+                        </tr> -->
+                    </tbody> 
+                </table>
+            </div>
+        </div>   
+    </body>
+</html>
