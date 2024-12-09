@@ -77,19 +77,35 @@ function signOut() {
     console.log(loginState);
 }
 
-// 회원가입함수
+// 회원가입버튼클릭함수
 function signUp() {
     let sign = document.querySelector("#signUp_box");
     sign.style.display = "block";
+}
+// 회원가입함수
+function addIdList() {
+    let overlap = false;
     let id = document.querySelector("#signUp_id");
     let pw = document.querySelector("#signUp_pw");
     for(let index = 0; index < idList.length; index++) {
         let temp = idList[index];
-        if(temp.id != id.value) {
-            let newId = {code : IDcode, id : id.value, pw : pw.value};
-            idList.push(newId);
+        if(temp.id == id.value) {
+            overlap = true;
+            break;
         }
     }
+    if(overlap) {
+        alert("중복된 아이디가 존재합니다.\n다른 아이디를 입력해주세요.");
+    } else {
+        let newId = {code : IDcode, id : id.value, pw : pw.value};
+        idList.push(newId);
+        IDcode++;
+        alert(`ID : ${id.value}으(로) 회원가입이 되었습니다.`);
+        id.value = "";
+        pw.value = "";
+        document.querySelector("#signUp_box").style.display = "none";
+    }
+    console.log(idList);
 }
 
 // 게시물출력함수

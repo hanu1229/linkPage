@@ -76,9 +76,6 @@ tbody tr:nth-child(2n) {
 tbody tr:nth-child(2n+1) {
     background-color : #cfd5ea;
 }
-#detail_posting > div {
-    /* display : none; */
-}
 
 /* #region 게시판 제목 관련 */
 th {
